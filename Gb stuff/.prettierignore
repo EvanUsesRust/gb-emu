@@ -1,0 +1,8 @@
+/**/docker-compose.yaml
+/**/docker-compose.yml
+/**/Dockerfile
+/**/mgba.js
+/**/mgba.wasm
+/**/nginx.conf
+/admin/**/*
+/auth/**/*

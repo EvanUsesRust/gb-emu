@@ -1,0 +1,35 @@
+name: Build Admin
+
+on:
+  workflow_call:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: admin
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: admin
+          sparse-checkout-cone-mode: false
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: 'stable'
+          check-latest: true
+          cache-dependency-path: admin/go.sum
+
+      - name: Format
+        run: if [ "$(gofmt -s -l . | wc -l)" -gt 0 ]; then exit 1; fi
+
+      - name: Build
+        run: make build
+
+      # TODO
+      # - name: Test
+      #   run: go test --v --cover --race ./...
