@@ -96,12 +96,13 @@
     </head>
 
     <body>
+        
         <div id="top">
             <h1>EmulatorJS Demo</h1>
             <img src="docs/Logo-light.png" alt="Logo" class="logo">
         </div>
         <div id = box>
-            <input type = file id = input>
+            <input type = button id = input>
             Drag ROM file or click here
         </div>
 
@@ -129,9 +130,15 @@
                 console.log("Threads are disabled");
             }
             
-            input.onchange = async () => {
-                const url = input.files[0]
-                const parts = input.files[0].name.split(".")
+            input.onclick = async () => {
+                const url = fetch("Pokemon Blue.gb");
+                loadfile(url);
+            }
+
+            async function loadfile(url){
+                
+
+                const parts = url.name.split(".");
 
                 const core = await (async (ext) => {
                     if (["fds", "nes", "unif", "unf"].includes(ext))
@@ -249,6 +256,7 @@
                 script.src = "data/loader.js";
                 document.body.appendChild(script);
             }
+            
             box.ondragover = () => box.setAttribute("drag", true);
             box.ondragleave = () => box.removeAttribute("drag");
         </script>
