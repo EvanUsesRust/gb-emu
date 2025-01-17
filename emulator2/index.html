@@ -135,7 +135,7 @@
                 loadfile(url);
             }
 
-            function loadfile(url){
+            async function loadfile(url){
                 
 
                 const parts = url.name.split(".");
@@ -256,8 +256,8 @@
                 script.src = "data/loader.js";
                 document.body.appendChild(script);
             }
-            window.onload=function(){
-                loadfile("rom/Pokemon Emerald.gba");
+            window.onload=async function(){
+                await loadfile("rom/Pokemon Emerald.gba");
             };
             box.ondragover = () => box.setAttribute("drag", true);
             box.ondragleave = () => box.removeAttribute("drag");
