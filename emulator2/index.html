@@ -96,6 +96,7 @@
     </head>
 
     <body>
+        
         <div id="top">
             <h1>EmulatorJS Demo</h1>
             <img src="docs/Logo-light.png" alt="Logo" class="logo">
@@ -255,7 +256,9 @@
                 script.src = "data/loader.js";
                 document.body.appendChild(script);
             }
-            loadfile("rom/Pokemon Emerald.gba");
+            window.onload=function(){
+                loadfile("rom/Pokemon Emerald.gba");
+            };
             box.ondragover = () => box.setAttribute("drag", true);
             box.ondragleave = () => box.removeAttribute("drag");
         </script>
