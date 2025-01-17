@@ -102,7 +102,7 @@
             <img src="docs/Logo-light.png" alt="Logo" class="logo">
         </div>
         <div id = box>
-            <input type = file id = input>
+            <input type = button id = input>
             Drag ROM file or click here
         </div>
 
@@ -130,8 +130,8 @@
                 console.log("Threads are disabled");
             }
             
-            input.onchange = async () => {
-                const url = input.files[0];
+            input.onclick = async () => {
+                const url = "rom/Pokemon Blue.gb";
                 loadfile(url);
             }
 
