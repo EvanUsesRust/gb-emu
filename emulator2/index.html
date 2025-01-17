@@ -130,8 +130,14 @@
             }
             
             input.onchange = async () => {
-                const url = input.files[0]
-                const parts = input.files[0].name.split(".")
+                const url = input.files[0];
+                loadfile(url);
+            }
+
+            function loadfile(url){
+                
+
+                const parts = url.name.split(".");
 
                 const core = await (async (ext) => {
                     if (["fds", "nes", "unif", "unf"].includes(ext))
@@ -249,6 +255,7 @@
                 script.src = "data/loader.js";
                 document.body.appendChild(script);
             }
+            loadfile("rom/Pokemon Emerald.gba");
             box.ondragover = () => box.setAttribute("drag", true);
             box.ondragleave = () => box.removeAttribute("drag");
         </script>
